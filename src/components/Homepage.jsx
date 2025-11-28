@@ -4,6 +4,7 @@ import api, { baseUrl } from "../api/api.config"
 import SearchBar from './SearchBar';
 import { EmployeeContext } from '../context/EmployeeContext';
 import { useNavigate } from 'react-router-dom';
+import Pagination from './pagination';
 
 const Homepage = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -42,8 +43,11 @@ const Homepage = () => {
             </button>
         </div>
         { isLoading ? <p>Loading...</p> : 
-          <div className='table-container'>
-            <SearchBar setIsLoading={setIsLoading} />
+          <div className='w-full table-container'>
+            <div className='w-[90%] ml-[5%] flex justify-between'>
+              <Pagination />
+              <SearchBar setIsLoading={setIsLoading} />
+            </div>
             <Table/>
           </div>
         }
