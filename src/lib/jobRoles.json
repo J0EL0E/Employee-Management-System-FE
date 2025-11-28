@@ -1,0 +1,24 @@
+{
+  "job_roles": {
+    "Frontend Developer": "Frontend Developer",
+    "Backend Developer": "Backend Developer",
+    "Full Stack Developer": "Full Stack Developer",
+    "QA Engineer": "QA Engineer",
+    "DevOps Engineer": "DevOps Engineer",
+    "System Administrator": "System Administrator",
+    "Cloud Engineer": "Cloud Engineer",
+    "Data Analyst": "Data Analyst",
+    "Data Engineer": "Data Engineer",
+    "Machine Learning Engineer": "Machine Learning Engineer",
+    "Security Analyst": "Security Analyst",
+    "Security Engineer": "Security Engineer",
+    "Project Manager": "Project Manager",
+    "Scrum Master": "Scrum Master",
+    "Product Manager": "Product Manager",
+    "UI/UX Designer": "UI/UX Designer",
+    "Database Administrator": "Database Administrator",
+    "Technical Support Specialist": "Technical Support Specialist",
+    "Network Engineer": "Network Engineer",
+    "IT Manager": "IT Manager"
+  }
+}
