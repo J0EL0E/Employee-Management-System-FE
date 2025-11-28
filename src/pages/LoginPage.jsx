@@ -71,7 +71,7 @@ const LoginPage = () => {
             <div className='w-full flex'>
                 <ThemedInput 
                  id="password" 
-                 type="text" 
+                 type={showPassword ? "text": "password"  } 
                  value={formData.password} 
                  form_name="password" handlerFunc={handleChange}
                  placeholder={"Enter Your Password"}

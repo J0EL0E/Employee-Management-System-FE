@@ -25,7 +25,7 @@ const UpdateEmployee = () => {
 
   useEffect(() => {
     ( async () => {
-      const response = await api.get(`${baseUrl}/api/v1/employee?id=${id}`);
+      const response = await api.get(`${baseUrl}/api/v1/employee/id?id=${id}`);
       const responseData = response.data;
       const {employee} = responseData;
       console.log(responseData)
@@ -38,7 +38,6 @@ const UpdateEmployee = () => {
         lastName: employee.last_name,
         emailAddress: employee.email_address,
         phoneNumber: employee.phone,
-        photoUrl: "",
         id: id
       })
 

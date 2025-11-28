@@ -12,9 +12,8 @@ function Pagination() {
 
     return (
     <div className='flex justify-center items-center'>
-        
         <div className='border-2 border-black text-black rounded-md w-[20%] px-3 py-2'>
-            <select name="filter_by_page" className='w-full' id="filter-option" onChange={(e) => {
+            <select name="filter_by_page" className='w-full' id="filter-option" value={currentLimit} onChange={(e) => {
                 const {value} = e.target
                 updateCurrentLimit(value)
             }}>
