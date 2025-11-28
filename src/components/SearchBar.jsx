@@ -1,20 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ThemedInput from './ThemedInput'
 import ThemedButton from './ThemedButton'
 import api, { baseUrl } from '../api/api.config'
 import { EmployeeContext } from '../context/EmployeeContext'
+import { useNavigate } from 'react-router-dom'
 
 const SearchBar = ({ setIsLoading }) => {
   const [searchKey, setSearchKey] = useState("");
-  const {updateCurrentEmployeeList, currentLimit, currentPage} = useContext(EmployeeContext)
+  const {updateCurrentEmployeeList, currentLimit, currentPage} = useContext(EmployeeContext);
+  const navigate = useNavigate();
 
   const searchEmployeeByName = async (e) => {
     try{
         e.preventDefault();
         setIsLoading(true)
         
-        const response = await api.get(`${baseUrl}/api/v1/employee/search?page=${currentPage}
-            &limit=${currentLimit}&searchKey=${searchKey}`);
+        const response = await api.get(`${baseUrl}/api/v1/employee/search?page=${currentPage}&limit=${currentLimit}&searchKey=${searchKey}`);
         const responseData = response.data;
         console.log(responseData)
         const {employees} = responseData;
@@ -28,13 +29,19 @@ const SearchBar = ({ setIsLoading }) => {
     }
   }
 
+//   useEffect(() => {
+//     if(!searchKey){
+//         navigate("/")
+//     }
+//   }, [searchKey])
+
   const catchSearchKey = (e) => {
     const {value} = e.target;
     setSearchKey(value);
   }
 
   return (
-    <form className='flex justify-end w-[90%] h-[10%] pt-5 px-3 ml-[5%]' onSubmit={searchEmployeeByName}>
+    <form className='flex justify-end h-[10%] pt-5 px-3 ml-[5%]' onSubmit={searchEmployeeByName}>
         <input
         id="searchBar"
         value={searchKey}
@@ -48,6 +55,8 @@ const SearchBar = ({ setIsLoading }) => {
             children="Search"
         />
     </form>
+
+
   )
 }
 
