@@ -8,8 +8,8 @@
 Clone the frontend repository:
 
 ```bash
-git clone <Your_Frontend_Repo_Link_Here>
-cd <your-fe-folder-name>
+git clone (https://github.com/J0EL0E/Employee-Management-System-FE)
+cd Employee-Management-System-FE
 Install Dependencies
 Install all required Node.js packages:
 
