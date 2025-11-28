@@ -165,7 +165,17 @@ const AddNewEmployee = () => {
                  styling="w-full text-black text-1rem rounded-md py-3 px-2 border-black border-solid border-2px mr-2px" />
             </div>
         </div>
-            <ThemedButton type="submit" styling="w-3/4 rounded-sm px-10 py-5 mt-5" children={isLoading ? "Loading..." : "Add New Employee"}/>
+        <ThemedButton type="submit" styling="w-3/4 rounded-sm px-10 py-5 mt-5" children={isLoading ? "Loading..." : "Add New Employee"}/>
+        <button 
+          type='button' 
+          onClick={() => {
+            navigate("/");
+          }}
+          className='bg-red-500 rounded-md px-3 py-2 text-white mt-5'
+          style={{backgroundColor: "red"}}
+        >
+          Cancel
+        </button>
     </form>
     </div>
 

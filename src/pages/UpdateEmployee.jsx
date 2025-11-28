@@ -5,7 +5,7 @@ import jobs from "../lib/jobRoles.json"
 import ThemedLabel from '../components/ThemedLabel';
 import ThemedInput from '../components/ThemedInput';
 import ThemedButton from '../components/ThemedButton';
-import api from '../api/api.config';
+import api, { baseUrl } from '../api/api.config';
 
 const UpdateEmployee = () => {
   
@@ -22,6 +22,29 @@ const UpdateEmployee = () => {
     photoUrl: "",
     id: id
   });
+
+  useEffect(() => {
+    ( async () => {
+      const response = await api.get(`${baseUrl}/api/v1/employee?id=${id}`);
+      const responseData = response.data;
+      const {employee} = responseData;
+      console.log(responseData)
+
+      setFormData({
+        country: employee.country,
+        accountType: employee.account_type,
+        userName: employee.username,
+        firstName: employee.first_name,
+        lastName: employee.last_name,
+        emailAddress: employee.email_address,
+        phoneNumber: employee.phone,
+        photoUrl: "",
+        id: id
+      })
+
+
+    })();
+  }, [id])
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
   
@@ -40,7 +63,7 @@ const UpdateEmployee = () => {
       try{
           e.preventDefault();
           setIsLoading(true)
-          const response = await api.post(`${import.meta.env.VITE_API_HOST}/api/v1/employee/create`, formData, {withCredentials: true});
+          const response = await api.post(`${import.meta.env.VITE_API_HOST}/api/v1/employee/update/${id}`, formData, {withCredentials: true});
           const responseData = response.data
           console.log(responseData);
           setInterval(() => {
@@ -58,7 +81,7 @@ const UpdateEmployee = () => {
   return (
        <div className='w-full h-full flex justify-center items-center'>
         <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center mt-[10vh] w-[70%] md:w-[50%]  h-1/2 rounded-md bg-white py-10 px-10 shadow-md'>
-        <h1 className='text-black'>Create New Employee</h1>
+        <h1 className='text-black'>Update Employee Details</h1>
         <div className='w-[90%] mt-5 flex flex-col items-start justify-start'>
             <ThemedLabel htmlFor="country" styling="w-auto text-black text-1rem mb-3" children={"Country"} />
             <div className='w-full rounded-md border-2 border-black'>
@@ -168,6 +191,16 @@ const UpdateEmployee = () => {
             </div>
         </div>
             <ThemedButton type="submit" styling="w-3/4 rounded-sm px-10 py-5 mt-5" children={isLoading ? "Loading..." : "Update Employee Details"}/>
+            <button 
+              type='button' 
+              onClick={() => {
+                navigate("/");
+              }}
+              className='bg-red-500 rounded-md px-3 py-2 text-white mt-5'
+              style={{backgroundColor: "red"}}
+              >
+                Cancel
+              </button>
     </form>
     </div>
 
